@@ -7,6 +7,7 @@ This project us the official Flask tutorial on 2023/01/13 taken from [https://fl
 ### 1.0.2 Future Development
 
 - Like / unlike a post.
+- add testing for focus view feature
 
 ### 1.0.1
 
