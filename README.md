@@ -1,6 +1,18 @@
 # Notes
 
-This project us the official Flask tutorial on 2023/01/13 taken from [https://flask.palletsprojects.com/en/2.2.x/tutorial]
+This project us the official Flask tutorial on 2023/01/13 taken from [https://flask.palletsprojects.com/en/2.2.x/tutorial]. After finishing the tutorial I kept working on the recommended "Keep Development" ideas. 
+
+## Updates
+
+### 1.0.2 Future Development
+
+- Like / unlike a post.
+
+### 1.0.1
+
+- A detail view to show a single post. Click a post’s title to go to its page
+- Created a feature branch
+- Figured out how to debug from vs code so I can place breaks into the code
 
 ## setting up Virtual Environment
 

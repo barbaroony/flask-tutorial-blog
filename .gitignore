@@ -1,14 +1,18 @@
+# Project Virtual Environment
 venv/
 
+# Compiled python code and test data
 *.pyc
 __pycache__/
-
-instance/
-
 .pytest_cache/
 .coverage
 htmlcov/
-
 dist/
 build/
 *.egg-info/
+
+# Database Instance
+instance/
+
+# vs Code project specifications
+.vscode
