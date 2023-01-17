@@ -1,13 +1,15 @@
 # Notes
 
-This project us the official Flask tutorial on 2023/01/13 taken from [https://flask.palletsprojects.com/en/2.2.x/tutorial]. After finishing the tutorial I kept working on the recommended "Keep Development" ideas. 
+This project us the official Flask tutorial on 2023/01/13 taken from [https://flask.palletsprojects.com/en/2.2.x/tutorial]. After finishing the tutorial I kept working on the recommended "Keep Development" ideas.
 
 ## Updates
 
 ### 1.0.2 Future Development
 
-- Like / unlike a post.
-- add testing for focus view feature
+- [x] Like / unlike a post.
+- [ ] use images for up/down vote
+- [ ] add testing for focus view feature
+- [ ] allow users to only use vote once
 
 ### 1.0.1
 

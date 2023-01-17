@@ -8,11 +8,12 @@ from flaskr.db import get_db
 
 bp = Blueprint('blog', __name__)
 
+
 @bp.route('/')
 def index():
     db = get_db()
     posts = db.execute(
-        'SELECT p.id, title, body, created, author_id, username'
+        'SELECT p.id, title, body, created, author_id, username, likes'
         ' FROM post p JOIN user u ON p.author_id = u.id'
         ' ORDER BY created DESC'
     ).fetchall()
@@ -47,7 +48,7 @@ def create():
 
 def get_post(id, check_author=True):
     post = get_db().execute(
-        'SELECT p.id, title, body, created, author_id, username'
+        'SELECT p.id, title, body, created, author_id, username, likes'
         ' FROM post p JOIN user u ON p.author_id = u.id'
         ' WHERE p.id = ?',
         (id,)
@@ -104,3 +105,41 @@ def delete(id):
 def focus(id):
     post = get_post(id)
     return render_template('blog/focus.html', post=post)
+
+
+@bp.route('/<int:id>/upvote', methods=('POST', 'GET'))
+@login_required
+def upvote(id):
+    """Adds upvote to the post
+    
+    The method is not efficient because it requires three database calls 
+    instead of one. I would prefer to pass the data post entry as an argument
+    instead of row id. Passing a row id makes me get the db three times.
+    """
+    post = get_post(id)
+    likes = post['likes'] + 1
+    db = get_db()
+    db.execute(
+        'UPDATE post SET likes = ?'
+        ' WHERE id = ?',
+        (likes, id)
+    )
+    db.commit()
+    return redirect(request.referrer)
+
+
+@bp.route('/<int:id>/down', methods=('POST', 'GET'))
+@login_required
+def downvote(id):
+    """Adds down to the post
+    """
+    post = get_post(id)
+    likes = post['likes'] - 1 
+    db = get_db()
+    db.execute(
+        'UPDATE post SET likes = ?'
+        ' WHERE id = ?',
+        (likes, id)
+    )
+    db.commit()
+    return redirect(request.referrer)

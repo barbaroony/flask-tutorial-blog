@@ -12,5 +12,14 @@
         {% endif %}
       </header>
       <p class="body">{{ post['body'] }}</p>
+      <div>
+        {% if g.user %}
+          <a class="action" href="{{ url_for('blog.upvote', id=post['id']) }}">Up</a>
+          {{post['likes']}} 
+          <a class="action" href="{{ url_for('blog.downvote', id=post['id']) }}">Down</a>
+        {% else %}
+          {{post['likes']}} 
+        {% endif %}
+      </div>
     </article>
 {% endblock %}
