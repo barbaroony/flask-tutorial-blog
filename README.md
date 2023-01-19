@@ -43,10 +43,20 @@ When deploying the site on remote use `python -c 'import secrets; print(secrets.
 
 ## Blog entries
 
-### Initial deployment on home Alpine server 20230114
+### 20230114 Initial deployment on home Alpine server 
 
-Today I was able to deploy an alpine server with python waitress, that was kind of fun! I installed proxmox on my old Lenovo U330 and found out that the old laptop does not have virtualization. I then installed Alpine linux and was able to ssh into it. When moving code over to the server, I moved the entire repository instead of moving the wheel object, and because of that, I was not able to correctly create a SECRET_KEY.
+Today I was able to deploy the page on Alpine Linux server with python waitress, that was kind of fun! At first, I installed proxmox on my old Lenovo U330 and found out that the old laptop does not have virtualization. I then installed Alpine linux and was able to ssh into it. I set a static ip on the system to 192.167.87.11, in order to ssh to the machine use `ssh dmitriy@192.168.87.11`. I have also set up a DNS for the above address to **alpine.local**. When moving code over to the server, I moved the entire repository instead of moving the wheel object, and because of that, I was not able to correctly create a SECRET_KEY.
 
-Running the app using waitress made the project terminate when I closer the ssh terminal, unless i ran the process in the background with `waitress-serve --call 'flaskr:create_app'&`. Thank you Stan, for showing me how to run precesses in the background.
+Running the app using waitress made the project terminate when I closer the ssh terminal, unless i ran the process in the background with `waitress-serve --call 'flaskr:create_app'&`. Thank you Stan, for showing me how to run precesses in the background. By default the waitress will run the application on port 8080 so that in order to access the site, use `alpine.local:8080` on any computer on the network.
 
 I look forward to keep working on this project.
+
+### 20230118 Playing with my new toys
+
+I took a few days to work sqlite and am still working on it. I need to learn sql queries because I wanted to limit users to only a single up/down vote per post and my understanding of sqlite was limiting my work. I look forward to using my understanding of sqlite in other projects. I believe that the query language is the same with other databases.
+
+While wasting time, I also installed a docker and docker-composer on the Alpine machine. I look forward to playing with docker as well. I did not like running docker on my main machine when I was originaly learning docker a few years ago.
+
+For *funsies* I have also installed a wordpress docker. The container can be reached at `alpine.local` or the static ip from above. I used this [tutorial](https://cloudinfrastructureservices.co.uk/install-wordpress-with-docker-compose/).
+
+TODO: think about running my own gitlab server, possibly on the NAS.
